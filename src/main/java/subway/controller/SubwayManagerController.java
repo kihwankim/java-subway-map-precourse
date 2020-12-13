@@ -21,7 +21,17 @@ public class SubwayManagerController {
         while (subwayMangerFlag != SubwayMangerFlag.QUIT) {
             this.subwayManagerOutputViewer.printMainDisplayMessage();
             CommonOutputViewer.printInputFlagDataMessage();
-            subwayMangerFlag = SubwayMangerFlag.findByFlagCode(this.subwayManagerInputViewer.inputMainSubwayManagerFlagStr());
+            subwayMangerFlag = this.handlerSubwayMangerFlag();
+        }
+    }
+
+    private SubwayMangerFlag handlerSubwayMangerFlag() {
+        while (true) {
+            try {
+                return SubwayMangerFlag.findByFlagCode(this.subwayManagerInputViewer.inputMainSubwayManagerFlagStr());
+            } catch (IllegalArgumentException illegalArgumentException) {
+                this.subwayManagerOutputViewer.printErrorIvalidInput();
+            }
         }
     }
 }
