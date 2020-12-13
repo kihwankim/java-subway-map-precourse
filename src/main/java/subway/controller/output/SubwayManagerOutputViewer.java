@@ -12,14 +12,13 @@ public class SubwayManagerOutputViewer {
     private static final String ERROR_INVALID_INPUT_DATA_MESSAGE = "선택할 수 없는 기능입니다.";
 
     public void printMainDisplayMessage() {
-        StringBuilder mainDisplayChoosingDashboardPrintMessage = new StringBuilder();
-        mainDisplayChoosingDashboardPrintMessage.append(MESSAGE_MAIN_DISPLAY_HEAD).append(MESSAGE_ENTER)
-                .append(MESSAGE_STATION_MANAGEMENT_FLAG).append(MESSAGE_ENTER)
-                .append(MESSAGE_LINE_MANAGEMENT_FLAG).append(MESSAGE_ENTER)
-                .append(MESSAGE_INTERVAL_MANAGEMENT_FLAG).append(MESSAGE_ENTER)
-                .append(MESSAGE_PRINT_ALL_STATION_LINE_FLAG).append(MESSAGE_ENTER)
-                .append(MESSAGE_QUIT_FLAG).append(MESSAGE_ENTER);
-        System.out.println(mainDisplayChoosingDashboardPrintMessage.toString());
+        String mainDisplayChoosingDashboardPrintMessage = MESSAGE_MAIN_DISPLAY_HEAD + MESSAGE_ENTER +
+                MESSAGE_STATION_MANAGEMENT_FLAG + MESSAGE_ENTER +
+                MESSAGE_LINE_MANAGEMENT_FLAG + MESSAGE_ENTER +
+                MESSAGE_INTERVAL_MANAGEMENT_FLAG + MESSAGE_ENTER +
+                MESSAGE_PRINT_ALL_STATION_LINE_FLAG + MESSAGE_ENTER +
+                MESSAGE_QUIT_FLAG + MESSAGE_ENTER;
+        System.out.println(mainDisplayChoosingDashboardPrintMessage);
     }
 
     public void printErrorIvalidInput() {
