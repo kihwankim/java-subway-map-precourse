@@ -10,10 +10,12 @@ import java.util.Scanner;
 public class SubwayManagerController {
     private final SubwayManagerInputViewer subwayManagerInputViewer;
     private final SubwayManagerOutputViewer subwayManagerOutputViewer;
+    private final StationController stationController;
 
     public SubwayManagerController(final Scanner scanner) {
         this.subwayManagerInputViewer = new SubwayManagerInputViewer(scanner);
         this.subwayManagerOutputViewer = new SubwayManagerOutputViewer();
+        this.stationController = new StationController(scanner);
     }
 
     public void runSubwayManager() {
@@ -22,6 +24,13 @@ public class SubwayManagerController {
             this.subwayManagerOutputViewer.printMainDisplayMessage();
             CommonOutputViewer.printInputFlagDataMessage();
             subwayMangerFlag = this.handlerSubwayMangerFlag();
+            this.controlEachWork(subwayMangerFlag);
+        }
+    }
+
+    private void controlEachWork(SubwayMangerFlag subwayMangerFlag) {
+        if (subwayMangerFlag == SubwayMangerFlag.STATION_MANAGE) {
+            this.stationController.runStationManagingController();
         }
     }
 
