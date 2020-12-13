@@ -30,7 +30,7 @@ public class SubwayManagerController {
             try {
                 return SubwayMangerFlag.findByFlagCode(this.subwayManagerInputViewer.inputMainSubwayManagerFlagStr());
             } catch (IllegalArgumentException illegalArgumentException) {
-                this.subwayManagerOutputViewer.printErrorIvalidInput();
+                CommonOutputViewer.printErrorIvalidInput();
             }
         }
     }
