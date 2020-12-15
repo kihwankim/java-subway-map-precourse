@@ -1,5 +1,9 @@
 package subway.controller.output;
 
+import subway.domain.Station;
+
+import java.util.List;
+
 public class StationOutputViewer {
     private static final String MESSAGE_ENTER = "\n";
     private static final String MESSAGE_STATION_DISPLAY_HEAD = "## 역 관리 화면";
@@ -15,6 +19,7 @@ public class StationOutputViewer {
     private static final String MESSAGE_FOR_DELETING_STATION_NAME = "## 삭제할 역 이름을 입력하세요.";
     private static final String MESSAGE_SUCCESS_DELETE_STATION_NAME = "지하철 역이 삭제되었습니다.";
     private static final String MESSAGE_NON_EXISIT_STATION_NAME = "등록되지 않은 역 이름입니다.";
+    private static final String MESSAGE_HEAD_STATION_LIST = "## 역 목록";
 
     public void printStationDisplay() {
         System.out.println(MESSAGE_STATION_DISPLAY_HEAD + MESSAGE_ENTER +
@@ -46,5 +51,13 @@ public class StationOutputViewer {
 
     public void printErrorCuzNonExisitStationName() {
         System.out.println(MESSAGE_ENTER + ERROR_PREFIX_MESSAGE + MESSAGE_NON_EXISIT_STATION_NAME + MESSAGE_ENTER);
+    }
+
+    public void printAllStationName(List<Station> stations) {
+        StringBuilder stationNameStringBuilder = new StringBuilder();
+        stationNameStringBuilder.append(MESSAGE_ENTER).append(MESSAGE_HEAD_STATION_LIST).append(MESSAGE_ENTER);
+        stations.forEach(station -> stationNameStringBuilder.append(INFO_PREFIX_MESSAGE)
+                .append(station.getName()).append(MESSAGE_ENTER));
+        System.out.println(stationNameStringBuilder.toString());
     }
 }

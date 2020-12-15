@@ -31,6 +31,8 @@ public class StationController {
             this.stationOutputViewer.printSuccessStationName();
         } else if (stationFlag == StationFlag.DELETE) {
             this.deleteStation(this.handlerDeleteStationFromName());
+        } else if (stationFlag == StationFlag.SEARCH) {
+            this.stationOutputViewer.printAllStationName(StationRepository.stations());
         }
     }
 
