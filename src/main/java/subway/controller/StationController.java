@@ -3,7 +3,9 @@ package subway.controller;
 import subway.controller.input.StationInputViewer;
 import subway.controller.output.CommonOutputViewer;
 import subway.controller.output.StationOutputViewer;
+import subway.domain.Station;
 import subway.domain.StationFlag;
+import subway.repository.StationRepository;
 
 import java.util.Scanner;
 
@@ -17,11 +19,27 @@ public class StationController {
     }
 
     public void runStationManagingController() {
-        StationFlag stationFlag = null;
-        while (stationFlag != StationFlag.BACK) {
-            this.stationOutputViewer.printStationDisplay();
-            CommonOutputViewer.printInputFlagDataMessage();
-            stationFlag = this.handlerStationFlag();
+        this.stationOutputViewer.printStationDisplay();
+        CommonOutputViewer.printInputFlagDataMessage();
+        StationFlag stationFlag = this.handlerStationFlag();
+        this.runEachStationWork(stationFlag);
+    }
+
+    private void runEachStationWork(StationFlag stationFlag) {
+        if (stationFlag == StationFlag.REGISTER) {
+            StationRepository.addStation(this.handlerMakingStation());
+            this.stationOutputViewer.printSuccessStationName();
+        }
+    }
+
+    private Station handlerMakingStation() {
+        while (true) {
+            try {
+                stationOutputViewer.printReuqestStationName();
+                return new Station(this.stationInputViewer.inputStationName());
+            } catch (IllegalArgumentException exception) {
+                this.stationOutputViewer.printShortStationNameLenMessage();
+            }
         }
     }
 

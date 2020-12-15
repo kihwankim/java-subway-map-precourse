@@ -12,4 +12,8 @@ public class StationInputViewer {
     public String inputStationFlag() {
         return scanner.nextLine().trim();
     }
+
+    public String inputStationName() {
+        return scanner.nextLine().trim();
+    }
 }
