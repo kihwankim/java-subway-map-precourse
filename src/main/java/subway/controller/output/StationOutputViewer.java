@@ -12,6 +12,9 @@ public class StationOutputViewer {
     private static final String INFO_PREFIX_MESSAGE = "[INFO] ";
     private static final String SUCCESS_STATION_INPUT_MESSAGE = "지하철 역이 등록 되었습니다.";
     private static final String MESSAGE_FOR_INSERTING_STATION_NAME = "## 등록할 역 이름을 입력하세요.";
+    private static final String MESSAGE_FOR_DELETING_STATION_NAME = "## 삭제할 역 이름을 입력하세요.";
+    private static final String MESSAGE_SUCCESS_DELETE_STATION_NAME = "지하철 역이 삭제되었습니다.";
+    private static final String MESSAGE_NON_EXISIT_STATION_NAME = "등록되지 않은 역 이름입니다.";
 
     public void printStationDisplay() {
         System.out.println(MESSAGE_STATION_DISPLAY_HEAD + MESSAGE_ENTER +
@@ -31,5 +34,17 @@ public class StationOutputViewer {
 
     public void printReuqestStationName() {
         System.out.println(MESSAGE_ENTER + MESSAGE_FOR_INSERTING_STATION_NAME);
+    }
+
+    public void printDeleteStationName() {
+        System.out.println(MESSAGE_ENTER + MESSAGE_FOR_DELETING_STATION_NAME);
+    }
+
+    public void printDeleteSuccessMessage() {
+        System.out.println(INFO_PREFIX_MESSAGE + MESSAGE_SUCCESS_DELETE_STATION_NAME);
+    }
+
+    public void printErrorCuzNonExisitStationName() {
+        System.out.println(MESSAGE_ENTER + ERROR_PREFIX_MESSAGE + MESSAGE_NON_EXISIT_STATION_NAME + MESSAGE_ENTER);
     }
 }

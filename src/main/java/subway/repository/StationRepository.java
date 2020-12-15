@@ -19,6 +19,10 @@ public class StationRepository {
     }
 
     public static boolean deleteStation(String name) {
+        if (2 > name.length()) {
+            throw new IllegalArgumentException();
+        }
+
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
     }
 }

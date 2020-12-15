@@ -29,7 +29,28 @@ public class StationController {
         if (stationFlag == StationFlag.REGISTER) {
             StationRepository.addStation(this.handlerMakingStation());
             this.stationOutputViewer.printSuccessStationName();
+        } else if (stationFlag == StationFlag.DELETE) {
+            this.deleteStation(this.handlerDeleteStationFromName());
         }
+    }
+
+    private boolean handlerDeleteStationFromName() {
+        while (true) {
+            try {
+                stationOutputViewer.printDeleteStationName();
+                return StationRepository.deleteStation(this.stationInputViewer.inputStationName());
+            } catch (IllegalArgumentException exception) {
+                this.stationOutputViewer.printShortStationNameLenMessage();
+            }
+        }
+    }
+
+    private void deleteStation(boolean isDelete) {
+        if (isDelete) {
+            stationOutputViewer.printDeleteSuccessMessage();
+            return;
+        }
+        stationOutputViewer.printErrorCuzNonExisitStationName();
     }
 
     private Station handlerMakingStation() {
